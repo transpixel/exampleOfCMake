@@ -15,3 +15,7 @@ add_compile_options(-std=c++11 -pedantic)
 add_subdirectory(src)
 add_subdirectory(tst)
 
+set(CPACK_GENERATOR "DEB")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "stc")
+include(CPack)
+
