@@ -8,9 +8,9 @@ project(
 	LANGUAGES CXX
 	)
 
-# Package desired custom compile options
-# however: can use target_compile_features instead
-# add_compile_options(-std=c++11 -pedantic)
+# Genreal package compile configuration
+# Note: can use target_compile_features() to customize individual target flags
+add_compile_options(-std=c++11 -pedantic)
 
 add_subdirectory(src)
 add_subdirectory(tst)

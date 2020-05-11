@@ -4,10 +4,13 @@ set(unitTest uinterface)
 
 add_executable(${unitTest} uinterface.cpp)
 
-target_compile_features(
-	${unitTest}
-	PRIVATE cxx_std_11
-	)
+
+# target specific overrides
+#target_compile_features(
+#	${unitTest}
+#	PRIVATE cxx_std_11
+#	)
+
 target_include_directories(
 	${unitTest}
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../inc
@@ -19,3 +22,7 @@ target_link_libraries(
 	LINK_PUBLIC exIfc
 	)
 
+install(
+	TARGETS ${unitTest}
+	DESTINATION bin/unittests
+	)
