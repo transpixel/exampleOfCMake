@@ -18,7 +18,7 @@ target_link_libraries(
 # install verification tests as part of project
 install(
 	TARGETS ${aValTest}
-	DESTINATION bin/validation
+	DESTINATION bin # disto packages will use this (e.g. </usr/local>/bin
 	)
 
 # add test to CTest collection
