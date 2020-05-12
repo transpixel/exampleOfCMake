@@ -1,6 +1,14 @@
 
 
-set(aUnitTest test_ifc_local)
+# create a list of all tests (could GLOB filenames)
+set(unitTests
+
+	test_ifc_local
+	test_ifc_other
+
+	)
+
+foreach(aUnitTest ${unitTests}) # loop over all tests
 
 add_executable(${aUnitTest} test_ifc_local.cpp test_common.hpp)
 
@@ -21,4 +29,6 @@ add_test(
 	${aUnitTest}  # cmake target
 	${aUnitTest}  # command to run test
 	)
+
+endforeach(aUnitTest)
 
