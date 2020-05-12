@@ -15,16 +15,14 @@ main
 
 	// exercise code
 	std::vector<int> const vals{ ifc::simulatedValues() };
-	int const gotSum{ std::accumulate(std::begin(vals), std::end(vals), 0) };
 
-	// evaluate results
-	int const expSum{ 17 + 18 + 19 + 20 + 21 }; // expected value
-	if (! (gotSum == expSum))
+	// check if project satisfies general expaction
+	int const gotSum{ std::accumulate(std::begin(vals), std::end(vals), 0) };
+	if (! (0 < gotSum))
 	{
 		status = tst::CTest::fail;
 		// diagnostics
 		std::cerr << "Fail:" << std::endl;
-		std::cerr << "expSum: " << expSum << std::endl;
 		std::cerr << "gotSum: " << gotSum << std::endl;
 	}
 	else
