@@ -17,8 +17,9 @@ include(CTest)
 enable_testing()
 
 # project tree
-add_subdirectory(src)
-add_subdirectory(tst)
+add_subdirectory(src) # project source code
+add_subdirectory(tst) # unit tests (check source code operation)
+add_subdirectory(vnv) # user/app validation tests
 
 # distro packaging
 set(CPACK_GENERATOR "DEB")

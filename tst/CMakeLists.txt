@@ -1,34 +1,24 @@
 
 
-set(unitTest test_ifc_public)
+set(aUnitTest test_ifc_local)
 
-add_executable(${unitTest} test_ifc_public.cpp test_common.hpp)
-
-
-# target specific overrides
-#target_compile_features(
-#	${unitTest}
-#	PRIVATE cxx_std_11
-#	)
+add_executable(${aUnitTest} test_ifc_local.cpp test_common.hpp)
 
 target_include_directories(
-	${unitTest}
-	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../inc
-	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
+	${aUnitTest}
+	#	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../inc # public interface includes
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../src # project source (to be tested)
+	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}  # local test code includes
 	)
 
 target_link_libraries(
-	${unitTest}
+	${aUnitTest}
 	LINK_PUBLIC exIfc
 	)
 
-install(
-	TARGETS ${unitTest}
-	DESTINATION bin/unittests
+# add test to CTest collection
+add_test(
+	${aUnitTest}  # cmake target
+	${aUnitTest}  # command to run test
 	)
-
-
-message("PROJECT_BINARY_DIR: " ${PROJECT_BINARY_DIR})
-set(CTEST_BINARY_DIRECTORY ${PROJECT_BINARY_DIR}/tst)
-add_test(test_ifc_public test_ifc_public)
 
