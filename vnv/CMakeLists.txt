@@ -1,5 +1,13 @@
 
-set(aValTest test_ifc_public)
+# list validation programs
+set(valTests
+
+	test_ifc_public
+	
+	)
+
+# --> For all validation programs
+foreach(aValTest valTests)
 
 # here also uses support code from ../tst
 add_executable(${aValTest} test_ifc_public.cpp)
@@ -15,14 +23,20 @@ target_link_libraries(
 	LINK_PUBLIC exIfc
 	)
 
-# install verification tests as part of project
-install(
-	TARGETS ${aValTest}
-	DESTINATION bin # disto packages will use this (e.g. </usr/local>/bin
-	)
-
 # add test to CTest collection
 add_test(
 	${aValTest}  # cmake target
 	${aValTest}  # command to run test
 	)
+
+endforeach(aValTest)
+# <--
+
+
+# install all verification tests as part of project
+install(
+	TARGETS ${aValTest}
+	DESTINATION bin # disto packages will use this (e.g. </usr/local>/bin
+	)
+
+

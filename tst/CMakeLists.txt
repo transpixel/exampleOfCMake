@@ -1,6 +1,6 @@
 
 
-# create a list of all tests (could GLOB filenames)
+# list of all developer unit tests (or could GLOB for filenames)
 set(unitTests
 
 	test_ifc_local
@@ -8,6 +8,7 @@ set(unitTests
 
 	)
 
+# Example of CMake loop flow control - to setup each target in turn
 foreach(aUnitTest ${unitTests}) # loop over all tests
 
 add_executable(${aUnitTest} test_ifc_local.cpp test_common.hpp)
