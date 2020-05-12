@@ -1,15 +1,22 @@
 
 #include "ifc_local.hpp"
 
+#include "ifc_other.hpp"
+
 namespace ifc
 {
 
-int
-State :: operator()
-	()
-{
-	return theValue++;
-}
+	State :: State
+		()
+		: theValue{ sValue }
+	{ }
+
+	int
+	State :: operator()
+		()
+	{
+		return theValue++;
+	}
 
 }
 
