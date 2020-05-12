@@ -3,21 +3,21 @@
 #
 
 # create and configure build environment
-mkdir ./build ./tmplocal ./tmplocal/buildInfo/
-cd build
+mkdir ./tmpBuild ./tmpLocalInstall ./tmpLocalInstall/buildInfo/
+cd tmpBuild
 # would generally run ccmake here to setup configuration (use defaults here)
-cmake -DCMAKE_INSTALL_PREFIX=../tmplocal/ ..
+cmake -DCMAKE_INSTALL_PREFIX=../tmpLocalInstall/ ..
 
 # create dependency graph info
 cmake --graphviz=graphInfo.dot .
-dot -Tpng -o ../tmplocal/buildInfo/graphInfo.png graphInfo.dot
+dot -Tpng -o ../tmpLocalInstall/buildInfo/graphInfo.png graphInfo.dot
 
 # build system
 cmake --build . --clean-first
 
 # generate install package
 cpack
-cp ExampleOfCMake*.deb ../tmplocal/buildInfo/
+cp ExampleOfCMake*.deb ../tmpLocalInstall/buildInfo/
 
 # run one of the executables
 ./tst/uinterface  # run local build copy
@@ -29,8 +29,8 @@ cmake --build . --target install
 
 # cleanup
 cd ..
-# rm -r ./build
+# rm -r ./tmpBuild
 
 # display (modified) install tree
-tree tmplocal
+tree tmpLocalInstall
 

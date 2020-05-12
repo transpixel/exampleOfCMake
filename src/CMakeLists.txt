@@ -1,7 +1,7 @@
 
 
 set(modLibName exIfc)
-set(modLibSources interface.cpp ifc_local.cpp bar.cpp)
+set(modLibSources ifc_public.cpp ifc_local.cpp ifc_other.cpp)
 
 message("{modLibName}: " ${modLibName})
 

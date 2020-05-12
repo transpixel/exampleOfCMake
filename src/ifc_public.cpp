@@ -1,8 +1,8 @@
 
-#include "interface.hpp"
+#include "ifc_public.hpp"
 
-#include "bar.hpp"
 #include "ifc_local.hpp"
+#include "ifc_other.hpp"
 
 #include <algorithm>
 
@@ -16,10 +16,10 @@ simulatedValues
 {
 	std::vector<int> vals;
 	vals.resize(5u);
-	ifc::State state{ bar::sBar };
+	ifc::State state;
 	std::generate
 		( std::begin(vals), std::end(vals)
-		, [&state] () { return state(); }
+		, [&state] () { return state(); } // lambda func requires c++11
 		);
 	return vals;
 }

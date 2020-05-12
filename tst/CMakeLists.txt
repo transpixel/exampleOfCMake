@@ -1,8 +1,8 @@
 
 
-set(unitTest uinterface)
+set(unitTest test_ifc_public)
 
-add_executable(${unitTest} uinterface.cpp)
+add_executable(${unitTest} test_ifc_public.cpp test_common.hpp)
 
 
 # target specific overrides
