@@ -29,14 +29,14 @@ add_test(
 	${aValTest}  # command to run test
 	)
 
-endforeach(aValTest)
-# <--
-
-
-# install all verification tests as part of project
+# install verification program as part of project
 install(
 	TARGETS ${aValTest}
 	DESTINATION bin # disto packages will use this (e.g. </usr/local>/bin
 	)
+
+endforeach(aValTest)
+# <--
+
 
 
