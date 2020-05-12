@@ -15,6 +15,11 @@ dot -Tpng -o ../tmpLocalInstall/buildInfo/graphInfo.png graphInfo.dot
 # build system
 cmake --build . --clean-first
 
+# run tests
+# https://gitlab.kitware.com
+#	/cmake/community/-/wikis/doc/ctest/Testing-With-CTest
+ctest
+
 # generate install package
 cpack
 cp ExampleOfCMake*.deb ../tmpLocalInstall/buildInfo/

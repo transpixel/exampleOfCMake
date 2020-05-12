@@ -26,3 +26,9 @@ install(
 	TARGETS ${unitTest}
 	DESTINATION bin/unittests
 	)
+
+
+message("PROJECT_BINARY_DIR: " ${PROJECT_BINARY_DIR})
+set(CTEST_BINARY_DIRECTORY ${PROJECT_BINARY_DIR}/tst)
+add_test(test_ifc_public test_ifc_public)
+
