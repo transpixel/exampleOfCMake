@@ -28,5 +28,5 @@ target_include_directories(
 install(
 	TARGETS ${modLibName}
 	ARCHIVE
-	DESTINATION lib
+	DESTINATION lib # disto packages will use this (e.g. </usr/local>/lib
 	)
