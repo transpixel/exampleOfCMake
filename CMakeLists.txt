@@ -45,36 +45,38 @@ set_property(
 	APPEND PROPERTY COMPATIBLE_INTERFACE_STRING ExampleOfCMake_MAJOR_VERSION
 	)
 
+
 include(CMakePackageConfigHelpers)
 
+set(EXPO exIfc)
 write_basic_package_version_file(
-	"${CMAKE_CURRENT_BINARY_DIR}/exIfc/exIfcConfigVersion.cmake"
+	"${CMAKE_CURRENT_BINARY_DIR}/${EXPO}/${EXPO}ConfigVersion.cmake"
 	VERSION ${ExampleOfCMake_VERSION}
 	COMPATIBILITY AnyNewerVersion
 	)
 export(
-	EXPORT exIfcTargets
-	FILE "${CMAKE_CURRENT_BINARY_DIR}/exIfc/exIfcTargets.cmake"
+	EXPORT ${EXPO}Targets
+	FILE "${CMAKE_CURRENT_BINARY_DIR}/${EXPO}/${EXPO}Targets.cmake"
 	NAMESPACE ExampleOfCMake::
 	)
 configure_file(
-	cmake/exIfcConfig.cmake
-	"${CMAKE_CURRENT_BINARY_DIR}/exIfc/exIfcConfig.cmake"
+	cmake/ExampleOfCMakeConfig.cmake
+	"${CMAKE_CURRENT_BINARY_DIR}/${EXPO}/ExampleOfCMakeConfig.cmake"
 	COPYONLY
 	)
 
-set(ConfigPackageLocation lib/cmake/exIfc)
+set(ConfigPackageLocation lib/cmake/ExampleOfCMake)
 install(
-	EXPORT exIfcTargets
-	FILE exIfcTargets.cmake
+	EXPORT ${EXPO}Targets
+	FILE ${EXPO}Targets.cmake
 	NAMESPACE ExampleOfCMake::
 	DESTINATION ${ConfigPackageLocation}
 	#	COMPONENT Devel
 	)
 install(
 	FILES
-		cmake/exIfcConfig.cmake
-		"${CMAKE_CURRENT_BINARY_DIR}/exIfc/exIfcConfigVersion.cmake"
+		cmake/ExampleOfCMakeConfig.cmake
+		"${CMAKE_CURRENT_BINARY_DIR}/${EXPO}/${EXPO}ConfigVersion.cmake"
 	DESTINATION ${ConfigPackageLocation}
 	#	COMPONENT Devel
 	)
