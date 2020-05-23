@@ -19,12 +19,18 @@ add_library(
 
 target_include_directories(
 	${modLibName}
-	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../inc
+	PUBLIC
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../inc>
+		$<INSTALL_INTERFACE:/include>
 	PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
 	)
 
+# disto packages use the destinations relative (e.g. as </usr/local>/lib)
 install(
 	TARGETS ${modLibName}
-	ARCHIVE
-	DESTINATION lib # disto packages will use this (e.g. </usr/local>/lib
+	EXPORT exIfcTargets
+	#	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib
+	#	RUNTIME DESTINATION bin 
+	#	INCLUDES DESTINATION include
 	)
